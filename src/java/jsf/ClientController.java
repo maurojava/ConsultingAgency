@@ -13,6 +13,7 @@ import javax.faces.component.UIComponent;
 import javax.faces.context.FacesContext;
 import javax.faces.convert.Converter;
 import javax.faces.convert.FacesConverter;
+import javax.faces.convert.ShortConverter;
 import javax.faces.model.DataModel;
 import javax.faces.model.ListDataModel;
 import javax.faces.model.SelectItem;
@@ -21,7 +22,7 @@ import jpa.entities.ClientPK;
 @ManagedBean(name = "clientController")
 @SessionScoped
 public class ClientController {
-
+private javax.faces.convert.ShortConverter myshortconverter = new ShortConverter();
     private Client current;
     private DataModel items = null;
     @EJB
@@ -223,6 +224,8 @@ this.clientDepartmentNumber= 0;
     public void setClientDepartmentNumber(short clientDepartmentNumber) {
         this.clientDepartmentNumber = clientDepartmentNumber;
     }
+
+   
 
     @FacesConverter(forClass = Client.class)
     public static class ClientControllerConverter implements Converter {
