@@ -12,18 +12,18 @@
         <ui:define name="body">
             <h:panelGroup id="messagePanel" layout="block">
                 <h:messages errorStyle="color: red" infoStyle="color: green" layout="table"/>
-            <h:message for="clientPK.clientDepartmentNumberma" style="color:red" />
+            <h:message for="clientPK_clientDepartmentNumberma" style="color:red" />
             
             </h:panelGroup>
           
             
             <h:form>
                 <h:panelGrid columns="2">
-                    <h:outputLabel value="#{bundle.CreateClientLabel_clientPK_clientDepartmentNumber}" for="clientPK.clientDepartmentNumber" />
-                    <h:inputText id="clientPK.clientDepartmentNumber"  value="#{clientController.clientDepartmentNumber}" title="#{bundle.CreateClientTitle_clientPK_clientDepartmentNumber}" required="true" requiredMessage="#{bundle.CreateClientRequiredMessage_clientPK_clientDepartmentNumber}"/>
+                    <h:outputLabel value="#{bundle.CreateClientLabel_clientPK_clientDepartmentNumber}" for="clientPK_clientDepartmentNumber" />
+                    <h:inputText id="clientPK_clientDepartmentNumber"  value="#{clientController.clientDepartmentNumber}" title="#{bundle.CreateClientTitle_clientPK_clientDepartmentNumber}" required="true" requiredMessage="#{bundle.CreateClientRequiredMessage_clientPK_clientDepartmentNumber}"/>
                     
-                    <h:outputLabel value="#{bundle.CreateClientLabel_clientPK_clientName}" for="clientPK.clientName" />
-                    <h:inputText id="clientPK.clientName" value="#{clientController.clientName}" title="#{bundle.CreateClientTitle_clientPK_clientName}" required="true" requiredMessage="#{bundle.CreateClientRequiredMessage_clientPK_clientName}"/>
+                    <h:outputLabel value="#{bundle.CreateClientLabel_clientPK_clientName}" for="clientPK_clientName" />
+                    <h:inputText id="clientPK_clientName" value="#{clientController.clientName}" title="#{bundle.CreateClientTitle_clientPK_clientName}" required="true" requiredMessage="#{bundle.CreateClientRequiredMessage_clientPK_clientName}"/>
                     <h:outputLabel value="#{bundle.CreateClientLabel_contactEmail}" for="contactEmail" />
                     <h:inputText id="contactEmail" value="#{clientController.selected.contactEmail}" title="#{bundle.CreateClientTitle_contactEmail}" />
                     <h:outputLabel value="#{bundle.CreateClientLabel_contactPassword}" for="contactPassword" />
