@@ -97,6 +97,11 @@ public class Project implements Serializable {
 
     public void setClient(Client client) {
         this.client = client;
+        
+      String name=  client.getClientPK().getClientName();
+     short numershort=  client.getClientPK().getClientDepartmentNumber();
+        this.projectPK.setClientName(name);
+        this.projectPK.setClientDepartmentNumber(numershort);
     }
 
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "project")

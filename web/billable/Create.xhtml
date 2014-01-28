@@ -13,10 +13,10 @@
             <h:panelGroup id="messagePanel" layout="block">
                 <h:messages errorStyle="color: red" infoStyle="color: green" layout="table"/>
             </h:panelGroup>
-            <h:form>
+            <h:form>Create
                 <h:panelGrid columns="2">
                     <h:outputLabel value="#{bundle.CreateBillableLabel_billableId}" for="billableId" />
-                    <h:inputText id="billableId" value="#{billableController.selected.billableId}" title="#{bundle.CreateBillableTitle_billableId}" required="true" requiredMessage="#{bundle.CreateBillableRequiredMessage_billableId}"/>
+                    <h:inputText id="billableId" disabled="true"  value="#{billableController.selected.billableId}" title="#{bundle.CreateBillableTitle_billableId}" required="false" requiredMessage="#{bundle.CreateBillableRequiredMessage_billableId}"/>
                     <h:outputLabel value="#{bundle.CreateBillableLabel_startDate}" for="startDate" />
                     <h:inputText id="startDate" value="#{billableController.selected.startDate}" title="#{bundle.CreateBillableTitle_startDate}" >
                         <f:convertDateTime pattern="MM/dd/yyyy HH:mm:ss" />

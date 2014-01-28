@@ -17,15 +17,26 @@ import javax.faces.model.DataModel;
 import javax.faces.model.ListDataModel;
 import javax.faces.model.SelectItem;
 
-@ManagedBean (name="projectController")
+@ManagedBean(name = "projectController")
 @SessionScoped
 public class ProjectController {
 
     private Project current;
     private DataModel items = null;
-    @EJB private jpa.session.ProjectFacade ejbFacade;
+    @EJB
+    private jpa.session.ProjectFacade ejbFacade;
     private PaginationHelper pagination;
     private int selectedItemIndex;
+
+    //added from me
+    /*
+    private String clientName;
+
+    private short clientDepartmentNumber;
+    private String projectName ;
+    */
+    //end added form me
+
 
     public ProjectController() {
     }
@@ -53,7 +64,7 @@ public class ProjectController {
 
                 @Override
                 public DataModel createPageDataModel() {
-                    return new ListDataModel(getFacade().findRange(new int[]{getPageFirstItem(), getPageFirstItem()+getPageSize()}));
+                    return new ListDataModel(getFacade().findRange(new int[]{getPageFirstItem(), getPageFirstItem() + getPageSize()}));
                 }
             };
         }
@@ -66,7 +77,7 @@ public class ProjectController {
     }
 
     public String prepareView() {
-        current = (Project)getItems().getRowData();
+        current = (Project) getItems().getRowData();
         selectedItemIndex = pagination.getPageFirstItem() + getItems().getRowIndex();
         return "View";
     }
@@ -89,7 +100,7 @@ public class ProjectController {
     }
 
     public String prepareEdit() {
-        current = (Project)getItems().getRowData();
+        current = (Project) getItems().getRowData();
         selectedItemIndex = pagination.getPageFirstItem() + getItems().getRowIndex();
         return "Edit";
     }
@@ -106,7 +117,7 @@ public class ProjectController {
     }
 
     public String destroy() {
-        current = (Project)getItems().getRowData();
+        current = (Project) getItems().getRowData();
         selectedItemIndex = pagination.getPageFirstItem() + getItems().getRowIndex();
         performDestroy();
         recreateModel();
@@ -139,14 +150,14 @@ public class ProjectController {
         int count = getFacade().count();
         if (selectedItemIndex >= count) {
             // selected index cannot be bigger than number of items:
-            selectedItemIndex = count-1;
+            selectedItemIndex = count - 1;
             // go to previous page if last page disappeared:
             if (pagination.getPageFirstItem() >= count) {
                 pagination.previousPage();
             }
         }
         if (selectedItemIndex >= 0) {
-            current = getFacade().findRange(new int[]{selectedItemIndex, selectedItemIndex+1}).get(0);
+            current = getFacade().findRange(new int[]{selectedItemIndex, selectedItemIndex + 1}).get(0);
         }
     }
 
@@ -181,7 +192,38 @@ public class ProjectController {
         return JsfUtil.getSelectItems(ejbFacade.findAll(), true);
     }
 
-    @FacesConverter(forClass=Project.class)
+    public String getClientName() {
+        return  this.getSelected().getProjectPK().getClientName();
+                
+             
+    }
+
+    public void setClientName(String clientName) {
+      this.getSelected().getProjectPK().setClientName(clientName);
+       
+    }
+
+    public short getClientDepartmentNumber() {
+        return  this.getSelected().getProjectPK().getClientDepartmentNumber();
+              
+    }
+
+    public void setClientDepartmentNumber(short clientDepartmentNumber) {
+        this.getSelected().getProjectPK().setClientDepartmentNumber(clientDepartmentNumber);
+        
+        
+    }
+
+    public String getProjectName() {
+        return  this.getSelected().getProjectPK().getProjectName();
+               
+    }
+
+    public void setProjectName(String projectName) {
+         this.getSelected().getProjectPK().setProjectName(projectName);
+    }
+
+    @FacesConverter(forClass = Project.class)
     public static class ProjectControllerConverter implements Converter {
 
         private static final String SEPARATOR = "#";
@@ -191,7 +233,7 @@ public class ProjectController {
             if (value == null || value.length() == 0) {
                 return null;
             }
-            ProjectController controller = (ProjectController)facesContext.getApplication().getELResolver().
+            ProjectController controller = (ProjectController) facesContext.getApplication().getELResolver().
                     getValue(facesContext.getELContext(), null, "projectController");
             return controller.ejbFacade.find(getKey(value));
         }
@@ -224,7 +266,7 @@ public class ProjectController {
                 Project o = (Project) object;
                 return getStringKey(o.getProjectPK());
             } else {
-                throw new IllegalArgumentException("object " + object + " is of type " + object.getClass().getName() + "; expected type: "+ProjectController.class.getName());
+                throw new IllegalArgumentException("object " + object + " is of type " + object.getClass().getName() + "; expected type: " + ProjectController.class.getName());
             }
         }
 
