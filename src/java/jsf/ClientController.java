@@ -22,7 +22,7 @@ import jpa.entities.ClientPK;
 @ManagedBean(name = "clientController")
 @SessionScoped
 public class ClientController {
-private javax.faces.convert.ShortConverter myshortconverter = new ShortConverter();
+
     private Client current;
     private DataModel items = null;
     @EJB
@@ -31,27 +31,25 @@ private javax.faces.convert.ShortConverter myshortconverter = new ShortConverter
     private int selectedItemIndex;
 
 //added from me
-  //  private String clientName;
- //  private short clientDepartmentNumber;
+    //  private String clientName;
+    //  private short clientDepartmentNumber;
 
-   /* private ClientPK createAndGetPrimaryKeyComposite() {
-        ClientPK primarykeycomposite = null;
+    /* private ClientPK createAndGetPrimaryKeyComposite() {
+     ClientPK primarykeycomposite = null;
 
-        if (this.clientName != null && (!this.clientName.isEmpty()) && this.clientDepartmentNumber > 0) {
-            primarykeycomposite = new ClientPK(clientName, clientDepartmentNumber);
-        }
-        return primarykeycomposite;
+     if (this.clientName != null && (!this.clientName.isEmpty()) && this.clientDepartmentNumber > 0) {
+     primarykeycomposite = new ClientPK(clientName, clientDepartmentNumber);
+     }
+     return primarykeycomposite;
 
-    }
-   */
-
+     }
+     */
     public ClientController() {
 //this.clientName="";
 //this.clientDepartmentNumber= 0;
     }
-    
+
 //end code added from me
-    
     public Client getSelected() {
         if (current == null) {
             current = new Client();
@@ -101,13 +99,13 @@ private javax.faces.convert.ShortConverter myshortconverter = new ShortConverter
 
     public String create() {
         try {
-/*
-        // added from me   
-            ClientPK pk = createAndGetPrimaryKeyComposite();
-            current.setClientPK(pk);
+            /*
+             // added from me   
+             ClientPK pk = createAndGetPrimaryKeyComposite();
+             current.setClientPK(pk);
 
-        // end code added from me
-        */
+             // end code added from me
+             */
             getFacade().create(current);
             JsfUtil.addSuccessMessage(ResourceBundle.getBundle("/resources/Bundle").getString("ClientCreated"));
             return prepareCreate();
@@ -211,26 +209,24 @@ private javax.faces.convert.ShortConverter myshortconverter = new ShortConverter
     }
 
     public String getClientName() {
-         return this.getSelected().getClientPK().getClientName();
+        return this.getSelected().getClientPK().getClientName();
     }
 
     public void setClientName(String clientName) {
-        
-     //  this.clientName = clientName;
+
+        //  this.clientName = clientName;
         getSelected().getClientPK().setClientName(clientName);
     }
 
     public short getClientDepartmentNumber() {
         return this.getSelected().getClientPK().getClientDepartmentNumber();
-             
+
     }
 
     public void setClientDepartmentNumber(short clientDepartmentNumber) {
-       // this.clientDepartmentNumber = clientDepartmentNumber;
+        // this.clientDepartmentNumber = clientDepartmentNumber;
         getSelected().getClientPK().setClientDepartmentNumber(clientDepartmentNumber);
     }
-
-   
 
     @FacesConverter(forClass = Client.class)
     public static class ClientControllerConverter implements Converter {
