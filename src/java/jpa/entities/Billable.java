@@ -36,40 +36,17 @@ import javax.persistence.TemporalType;
     @NamedQuery(name = "Billable.findByDescription", query = "SELECT b FROM Billable b WHERE b.description = :description")})
 public class Billable implements Serializable {
     private static final long serialVersionUID = 1L;
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Basic(optional = false)
-    @Column(name = "billable_id")
-    private Long billableId;
-    @Column(name = "start_date")
-    @Temporal(TemporalType.TIMESTAMP)
-    private Date startDate;
-    @Column(name = "end_date")
-    @Temporal(TemporalType.TIMESTAMP)
-    private Date endDate;
-    @Basic(optional = false)
-    @Column(name = "hours")
-    private short hours;
-    @Basic(optional = false)
-    @Column(name = "hourly_rate")
-    private BigDecimal hourlyRate;
-    @Basic(optional = false)
-    @Column(name = "billable_hourly_rate")
-    private BigDecimal billableHourlyRate;
+        private Long billableId;
+        private Date startDate;
+        private Date endDate;
+        private short hours;
+        private BigDecimal hourlyRate;
+        private BigDecimal billableHourlyRate;
    // @Column(name = "description")
     private String description;
-    @Lob
-    @Column(name = "artifacts")
-    private String artifacts;
-    @JoinColumns({
-        @JoinColumn(name = "client_name", referencedColumnName = "client_name"),
-        @JoinColumn(name = "client_department_number", referencedColumnName = "client_department_number"),
-        @JoinColumn(name = "project_name", referencedColumnName = "project_name")})
-    @ManyToOne(optional = false)
-    private Project project;
-    @JoinColumn(name = "consultant_id", referencedColumnName = "consultant_id")
-    @ManyToOne(optional = false)
-    private Consultant consultantId;
+        private String artifacts;
+        private Project project;
+        private Consultant consultantId;
 
     public Billable() {
     }
@@ -85,6 +62,10 @@ public class Billable implements Serializable {
         this.billableHourlyRate = billableHourlyRate;
     }
 
+@Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Basic(optional = false)
+    @Column(name = "billable_id")
     public Long getBillableId() {
         return billableId;
     }
@@ -93,6 +74,8 @@ public class Billable implements Serializable {
         this.billableId = billableId;
     }
 
+@Column(name = "start_date")
+    @Temporal(TemporalType.TIMESTAMP)
     public Date getStartDate() {
         return startDate;
     }
@@ -101,6 +84,8 @@ public class Billable implements Serializable {
         this.startDate = startDate;
     }
 
+@Column(name = "end_date")
+    @Temporal(TemporalType.TIMESTAMP)
     public Date getEndDate() {
         return endDate;
     }
@@ -109,6 +94,8 @@ public class Billable implements Serializable {
         this.endDate = endDate;
     }
 
+@Basic(optional = false)
+    @Column(name = "hours")
     public short getHours() {
         return hours;
     }
@@ -117,6 +104,8 @@ public class Billable implements Serializable {
         this.hours = hours;
     }
 
+@Basic(optional = false)
+    @Column(name = "hourly_rate")
     public BigDecimal getHourlyRate() {
         return hourlyRate;
     }
@@ -125,6 +114,8 @@ public class Billable implements Serializable {
         this.hourlyRate = hourlyRate;
     }
 
+@Basic(optional = false)
+    @Column(name = "billable_hourly_rate")
     public BigDecimal getBillableHourlyRate() {
         return billableHourlyRate;
     }
@@ -141,6 +132,8 @@ public class Billable implements Serializable {
         this.description = description;
     }
 
+@Lob
+    @Column(name = "artifacts")
     public String getArtifacts() {
         return artifacts;
     }
@@ -149,6 +142,11 @@ public class Billable implements Serializable {
         this.artifacts = artifacts;
     }
 
+@JoinColumns({
+        @JoinColumn(name = "client_name", referencedColumnName = "client_name"),
+        @JoinColumn(name = "client_department_number", referencedColumnName = "client_department_number"),
+        @JoinColumn(name = "project_name", referencedColumnName = "project_name")})
+    @ManyToOne(optional = false)
     public Project getProject() {
         return project;
     }
@@ -157,6 +155,8 @@ public class Billable implements Serializable {
         this.project = project;
     }
 
+@JoinColumn(name = "consultant_id", referencedColumnName = "consultant_id")
+    @ManyToOne(optional = false)
     public Consultant getConsultantId() {
         return consultantId;
     }

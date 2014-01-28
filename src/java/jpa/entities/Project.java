@@ -40,6 +40,7 @@ public class Project implements Serializable {
     private Collection<Billable> billableCollection;
 
     public Project() {
+   this.projectPK= new ProjectPK();
     }
 
     public Project(ProjectPK projectPK) {

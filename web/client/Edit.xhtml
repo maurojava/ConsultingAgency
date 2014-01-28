@@ -15,10 +15,10 @@
             </h:panelGroup>
             <h:form>
                 <h:panelGrid columns="2">
-                    <h:outputLabel value="#{bundle.EditClientLabel_clientPK_clientDepartmentNumber}" for="clientPK.clientDepartmentNumber" />
-                    <h:inputText id="clientPK.clientDepartmentNumber" value="#{clientController.selected.clientPK.clientDepartmentNumber}" title="#{bundle.EditClientTitle_clientPK_clientDepartmentNumber}" required="true" requiredMessage="#{bundle.EditClientRequiredMessage_clientPK_clientDepartmentNumber}"/>
-                    <h:outputLabel value="#{bundle.EditClientLabel_clientPK_clientName}" for="clientPK.clientName" />
-                    <h:inputText id="clientPK.clientName" value="#{clientController.selected.clientPK.clientName}" title="#{bundle.EditClientTitle_clientPK_clientName}" required="true" requiredMessage="#{bundle.EditClientRequiredMessage_clientPK_clientName}"/>
+                    <h:outputLabel value="#{bundle.EditClientLabel_clientPK_clientDepartmentNumber}" for="clientPK_clientDepartmentNumber" />
+                    <h:inputText id="clientPK_clientDepartmentNumber" value="#{clientController.selected.clientPK.clientDepartmentNumber}" title="#{bundle.EditClientTitle_clientPK_clientDepartmentNumber}" required="true" requiredMessage="#{bundle.EditClientRequiredMessage_clientPK_clientDepartmentNumber}"/>
+                    <h:outputLabel value="#{bundle.EditClientLabel_clientPK_clientName}" for="clientPK_clientName" />
+                    <h:inputText id="clientPK_clientName" value="#{clientController.selected.clientPK.clientName}" title="#{bundle.EditClientTitle_clientPK_clientName}" required="true" requiredMessage="#{bundle.EditClientRequiredMessage_clientPK_clientName}"/>
                     <h:outputLabel value="#{bundle.EditClientLabel_contactEmail}" for="contactEmail" />
                     <h:inputText id="contactEmail" value="#{clientController.selected.contactEmail}" title="#{bundle.EditClientTitle_contactEmail}" />
                     <h:outputLabel value="#{bundle.EditClientLabel_contactPassword}" for="contactPassword" />

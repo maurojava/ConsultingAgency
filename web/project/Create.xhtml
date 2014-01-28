@@ -15,8 +15,8 @@
             </h:panelGroup>
             <h:form>
                 <h:panelGrid columns="2">
-                    <h:outputLabel value="#{bundle.CreateProjectLabel_projectPK_projectName}" for="projectPK.projectName" />
-                    <h:inputText id="projectPK.projectName" value="#{projectController.selected.projectPK.projectName}" title="#{bundle.CreateProjectTitle_projectPK_projectName}" required="true" requiredMessage="#{bundle.CreateProjectRequiredMessage_projectPK_projectName}"/>
+                    <h:outputLabel value="#{bundle.CreateProjectLabel_projectPK_projectName}" for="projectPK_projectName" />
+                    <h:inputText id="projectPK_projectName" value="#{projectController.selected.projectPK.projectName}" title="#{bundle.CreateProjectTitle_projectPK_projectName}" required="true" requiredMessage="#{bundle.CreateProjectRequiredMessage_projectPK_projectName}"/>
                     <h:outputLabel value="#{bundle.CreateProjectLabel_contactEmail}" for="contactEmail" />
                     <h:inputText id="contactEmail" value="#{projectController.selected.contactEmail}" title="#{bundle.CreateProjectTitle_contactEmail}" />
                     <h:outputLabel value="#{bundle.CreateProjectLabel_contactPassword}" for="contactPassword" />

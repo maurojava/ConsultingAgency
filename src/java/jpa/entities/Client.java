@@ -37,6 +37,7 @@ public class Client implements Serializable {
     private Collection<Recruiter> recruiterCollection;
 
     public Client() {
+   this.clientPK= new ClientPK();
     }
 
     public Client(ClientPK clientPK) {

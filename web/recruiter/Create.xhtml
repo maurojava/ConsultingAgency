@@ -16,7 +16,7 @@
             <h:form>
                 <h:panelGrid columns="2">
                     <h:outputLabel value="#{bundle.CreateRecruiterLabel_recruiterId}" for="recruiterId" />
-                    <h:inputText id="recruiterId" value="#{recruiterController.selected.recruiterId}" title="#{bundle.CreateRecruiterTitle_recruiterId}" required="true" requiredMessage="#{bundle.CreateRecruiterRequiredMessage_recruiterId}"/>
+                    <h:inputText id="recruiterId" disabled="true"  value="#{recruiterController.selected.recruiterId}" title="#{bundle.CreateRecruiterTitle_recruiterId}" required="false" requiredMessage="#{bundle.CreateRecruiterRequiredMessage_recruiterId}"/>
                     <h:outputLabel value="#{bundle.CreateRecruiterLabel_email}" for="email" />
                     <h:inputText id="email" value="#{recruiterController.selected.email}" title="#{bundle.CreateRecruiterTitle_email}" required="true" requiredMessage="#{bundle.CreateRecruiterRequiredMessage_email}"/>
                     <h:outputLabel value="#{bundle.CreateRecruiterLabel_password}" for="password" />

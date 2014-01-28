@@ -16,7 +16,7 @@
             <h:form>
                 <h:panelGrid columns="2">
                     <h:outputLabel value="#{bundle.CreateConsultantLabel_consultantId}" for="consultantId" />
-                    <h:inputText id="consultantId" value="#{consultantController.selected.consultantId}" title="#{bundle.CreateConsultantTitle_consultantId}" required="true" requiredMessage="#{bundle.CreateConsultantRequiredMessage_consultantId}"/>
+                    <h:inputText id="consultantId"  disabled="true"value="#{consultantController.selected.consultantId}" title="#{bundle.CreateConsultantTitle_consultantId}" required="false" requiredMessage="#{bundle.CreateConsultantRequiredMessage_consultantId}"/>
                     <h:outputLabel value="#{bundle.CreateConsultantLabel_email}" for="email" />
                     <h:inputText id="email" value="#{consultantController.selected.email}" title="#{bundle.CreateConsultantTitle_email}" required="true" requiredMessage="#{bundle.CreateConsultantRequiredMessage_email}"/>
                     <h:outputLabel value="#{bundle.CreateConsultantLabel_password}" for="password" />
