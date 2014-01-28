@@ -11,14 +11,11 @@ import javax.persistence.Embeddable;
  */
 @Embeddable
 public class ProjectPK implements Serializable {
-    @Basic(optional = false)
-    @Column(name = "client_name")
+
+    //  @Basic(optional = false)
+    //  @Column(name = "client_name")
     private String clientName;
-    @Basic(optional = false)
-    @Column(name = "client_department_number")
     private short clientDepartmentNumber;
-    @Basic(optional = false)
-    @Column(name = "project_name")
     private String projectName;
 
     public ProjectPK() {
@@ -30,6 +27,8 @@ public class ProjectPK implements Serializable {
         this.projectName = projectName;
     }
 
+    @Basic(optional = false)
+    @Column(name = "client_name")
     public String getClientName() {
         return clientName;
     }
@@ -38,6 +37,8 @@ public class ProjectPK implements Serializable {
         this.clientName = clientName;
     }
 
+    @Basic(optional = false)
+    @Column(name = "client_department_number")
     public short getClientDepartmentNumber() {
         return clientDepartmentNumber;
     }
@@ -46,6 +47,8 @@ public class ProjectPK implements Serializable {
         this.clientDepartmentNumber = clientDepartmentNumber;
     }
 
+    @Basic(optional = false)
+    @Column(name = "project_name")
     public String getProjectName() {
         return projectName;
     }

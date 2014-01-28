@@ -56,7 +56,7 @@ public class Billable implements Serializable {
     @Basic(optional = false)
     @Column(name = "billable_hourly_rate")
     private BigDecimal billableHourlyRate;
-    @Column(name = "description")
+   // @Column(name = "description")
     private String description;
     @Lob
     @Column(name = "artifacts")
@@ -132,7 +132,7 @@ public class Billable implements Serializable {
     public void setBillableHourlyRate(BigDecimal billableHourlyRate) {
         this.billableHourlyRate = billableHourlyRate;
     }
-
+   @Column(name = "description")
     public String getDescription() {
         return description;
     }

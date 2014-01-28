@@ -30,30 +30,16 @@ import javax.persistence.Table;
     @NamedQuery(name = "Address.findByPostalCode", query = "SELECT a FROM Address a WHERE a.postalCode = :postalCode")})
 public class Address implements Serializable {
     private static final long serialVersionUID = 1L;
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Basic(optional = false)
-    @Column(name = "address_id")
-    private Integer addressId;
-    @Basic(optional = false)
-    @Column(name = "line1")
-    private String line1;
-    @Column(name = "line2")
-    private String line2;
-    @Basic(optional = false)
-    @Column(name = "city")
-    private String city;
-    @Basic(optional = false)
-    @Column(name = "region")
-    private String region;
-    @Basic(optional = false)
-    @Column(name = "country")
+        private Integer addressId;
+        private String line1;
+        private String line2;
+        private String city;
+        private String region;
+    //@Basic(optional = false)
+   // @Column(name = "country")
     private String country;
-    @Basic(optional = false)
-    @Column(name = "postal_code")
-    private String postalCode;
-    @OneToOne(cascade = CascadeType.ALL, mappedBy = "billingAddress")
-    private Client client;
+        private String postalCode;
+        private Client client;
 
     public Address() {
     }
@@ -71,6 +57,10 @@ public class Address implements Serializable {
         this.postalCode = postalCode;
     }
 
+@Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Basic(optional = false)
+    @Column(name = "address_id")
     public Integer getAddressId() {
         return addressId;
     }
@@ -79,6 +69,8 @@ public class Address implements Serializable {
         this.addressId = addressId;
     }
 
+@Basic(optional = false)
+    @Column(name = "line1")
     public String getLine1() {
         return line1;
     }
@@ -87,6 +79,7 @@ public class Address implements Serializable {
         this.line1 = line1;
     }
 
+@Column(name = "line2")
     public String getLine2() {
         return line2;
     }
@@ -95,6 +88,8 @@ public class Address implements Serializable {
         this.line2 = line2;
     }
 
+@Basic(optional = false)
+    @Column(name = "city")
     public String getCity() {
         return city;
     }
@@ -103,6 +98,8 @@ public class Address implements Serializable {
         this.city = city;
     }
 
+@Basic(optional = false)
+    @Column(name = "region")
     public String getRegion() {
         return region;
     }
@@ -110,7 +107,8 @@ public class Address implements Serializable {
     public void setRegion(String region) {
         this.region = region;
     }
-
+@Basic(optional = false)
+    @Column(name = "country")
     public String getCountry() {
         return country;
     }
@@ -119,6 +117,8 @@ public class Address implements Serializable {
         this.country = country;
     }
 
+@Basic(optional = false)
+    @Column(name = "postal_code")
     public String getPostalCode() {
         return postalCode;
     }
@@ -127,6 +127,7 @@ public class Address implements Serializable {
         this.postalCode = postalCode;
     }
 
+@OneToOne(cascade = CascadeType.ALL, mappedBy = "billingAddress")
     public Client getClient() {
         return client;
     }

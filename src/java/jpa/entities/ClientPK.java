@@ -11,11 +11,9 @@ import javax.persistence.Embeddable;
  */
 @Embeddable
 public class ClientPK implements Serializable {
-    @Basic(optional = false)
-    @Column(name = "client_name")
+   // @Basic(optional = false)
+    //  @Column(name = "client_name")
     private String clientName;
-    @Basic(optional = false)
-    @Column(name = "client_department_number")
     private short clientDepartmentNumber;
 
     public ClientPK() {
@@ -26,6 +24,8 @@ public class ClientPK implements Serializable {
         this.clientDepartmentNumber = clientDepartmentNumber;
     }
 
+    @Basic(optional = false)
+    @Column(name = "client_name")
     public String getClientName() {
         return clientName;
     }
@@ -34,6 +34,8 @@ public class ClientPK implements Serializable {
         this.clientName = clientName;
     }
 
+    @Basic(optional = false)
+    @Column(name = "client_department_number")
     public short getClientDepartmentNumber() {
         return clientDepartmentNumber;
     }

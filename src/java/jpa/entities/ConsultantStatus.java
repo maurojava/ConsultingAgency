@@ -23,15 +23,12 @@ import javax.persistence.Table;
     @NamedQuery(name = "ConsultantStatus.findByStatusId", query = "SELECT c FROM ConsultantStatus c WHERE c.statusId = :statusId"),
     @NamedQuery(name = "ConsultantStatus.findByDescription", query = "SELECT c FROM ConsultantStatus c WHERE c.description = :description")})
 public class ConsultantStatus implements Serializable {
+
     private static final long serialVersionUID = 1L;
-    @Id
-    @Basic(optional = false)
-    @Column(name = "status_id")
     private Character statusId;
-    @Basic(optional = false)
-    @Column(name = "description")
+    // @Basic(optional = false)
+    //  @Column(name = "description")
     private String description;
-    @OneToMany(cascade = CascadeType.ALL, mappedBy = "statusId")
     private Collection<Consultant> consultantCollection;
 
     public ConsultantStatus() {
@@ -46,6 +43,9 @@ public class ConsultantStatus implements Serializable {
         this.description = description;
     }
 
+    @Id
+    @Basic(optional = false)
+    @Column(name = "status_id")
     public Character getStatusId() {
         return statusId;
     }
@@ -54,6 +54,8 @@ public class ConsultantStatus implements Serializable {
         this.statusId = statusId;
     }
 
+    @Basic(optional = false)
+    @Column(name = "description")
     public String getDescription() {
         return description;
     }
@@ -62,6 +64,7 @@ public class ConsultantStatus implements Serializable {
         this.description = description;
     }
 
+    @OneToMany(cascade = CascadeType.ALL, mappedBy = "statusId")
     public Collection<Consultant> getConsultantCollection() {
         return consultantCollection;
     }

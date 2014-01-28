@@ -28,24 +28,14 @@ import javax.persistence.Table;
     @NamedQuery(name = "Recruiter.findByEmail", query = "SELECT r FROM Recruiter r WHERE r.email = :email"),
     @NamedQuery(name = "Recruiter.findByPassword", query = "SELECT r FROM Recruiter r WHERE r.password = :password")})
 public class Recruiter implements Serializable {
+
     private static final long serialVersionUID = 1L;
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Basic(optional = false)
-    @Column(name = "recruiter_id")
     private Integer recruiterId;
-    @Basic(optional = false)
-    @Column(name = "email")
     private String email;
-    @Basic(optional = false)
-    @Column(name = "password")
+    //   @Basic(optional = false)
+    //  @Column(name = "password")
     private String password;
-    @OneToMany(mappedBy = "recruiterId")
     private Collection<Consultant> consultantCollection;
-    @JoinColumns({
-        @JoinColumn(name = "client_name", referencedColumnName = "client_name"),
-        @JoinColumn(name = "client_department_number", referencedColumnName = "client_department_number")})
-    @ManyToOne
     private Client client;
 
     public Recruiter() {
@@ -61,6 +51,10 @@ public class Recruiter implements Serializable {
         this.password = password;
     }
 
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Basic(optional = false)
+    @Column(name = "recruiter_id")
     public Integer getRecruiterId() {
         return recruiterId;
     }
@@ -69,6 +63,8 @@ public class Recruiter implements Serializable {
         this.recruiterId = recruiterId;
     }
 
+    @Basic(optional = false)
+    @Column(name = "email")
     public String getEmail() {
         return email;
     }
@@ -77,6 +73,8 @@ public class Recruiter implements Serializable {
         this.email = email;
     }
 
+    @Basic(optional = false)
+    @Column(name = "password")
     public String getPassword() {
         return password;
     }
@@ -85,6 +83,7 @@ public class Recruiter implements Serializable {
         this.password = password;
     }
 
+    @OneToMany(mappedBy = "recruiterId")
     public Collection<Consultant> getConsultantCollection() {
         return consultantCollection;
     }
@@ -93,6 +92,10 @@ public class Recruiter implements Serializable {
         this.consultantCollection = consultantCollection;
     }
 
+    @JoinColumns({
+        @JoinColumn(name = "client_name", referencedColumnName = "client_name"),
+        @JoinColumn(name = "client_department_number", referencedColumnName = "client_department_number")})
+    @ManyToOne
     public Client getClient() {
         return client;
     }

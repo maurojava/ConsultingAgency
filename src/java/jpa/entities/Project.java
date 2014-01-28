@@ -29,21 +29,14 @@ import javax.persistence.Table;
     @NamedQuery(name = "Project.findByContactEmail", query = "SELECT p FROM Project p WHERE p.contactEmail = :contactEmail"),
     @NamedQuery(name = "Project.findByContactPassword", query = "SELECT p FROM Project p WHERE p.contactPassword = :contactPassword")})
 public class Project implements Serializable {
+
     private static final long serialVersionUID = 1L;
-    @EmbeddedId
     protected ProjectPK projectPK;
-    @Column(name = "contact_email")
     private String contactEmail;
-    @Column(name = "contact_password")
+    //@Column(name = "contact_password")
     private String contactPassword;
-    @ManyToMany(mappedBy = "projectCollection")
     private Collection<Consultant> consultantCollection;
-    @JoinColumns({
-        @JoinColumn(name = "client_name", referencedColumnName = "client_name", insertable = false, updatable = false),
-        @JoinColumn(name = "client_department_number", referencedColumnName = "client_department_number", insertable = false, updatable = false)})
-    @ManyToOne(optional = false)
     private Client client;
-    @OneToMany(cascade = CascadeType.ALL, mappedBy = "project")
     private Collection<Billable> billableCollection;
 
     public Project() {
@@ -57,6 +50,7 @@ public class Project implements Serializable {
         this.projectPK = new ProjectPK(clientName, clientDepartmentNumber, projectName);
     }
 
+    @EmbeddedId
     public ProjectPK getProjectPK() {
         return projectPK;
     }
@@ -65,6 +59,7 @@ public class Project implements Serializable {
         this.projectPK = projectPK;
     }
 
+    @Column(name = "contact_email")
     public String getContactEmail() {
         return contactEmail;
     }
@@ -73,6 +68,7 @@ public class Project implements Serializable {
         this.contactEmail = contactEmail;
     }
 
+    @Column(name = "contact_password")
     public String getContactPassword() {
         return contactPassword;
     }
@@ -81,6 +77,7 @@ public class Project implements Serializable {
         this.contactPassword = contactPassword;
     }
 
+    @ManyToMany(mappedBy = "projectCollection")
     public Collection<Consultant> getConsultantCollection() {
         return consultantCollection;
     }
@@ -89,6 +86,10 @@ public class Project implements Serializable {
         this.consultantCollection = consultantCollection;
     }
 
+    @JoinColumns({
+        @JoinColumn(name = "client_name", referencedColumnName = "client_name", insertable = false, updatable = false),
+        @JoinColumn(name = "client_department_number", referencedColumnName = "client_department_number", insertable = false, updatable = false)})
+    @ManyToOne(optional = false)
     public Client getClient() {
         return client;
     }
@@ -97,6 +98,7 @@ public class Project implements Serializable {
         this.client = client;
     }
 
+    @OneToMany(cascade = CascadeType.ALL, mappedBy = "project")
     public Collection<Billable> getBillableCollection() {
         return billableCollection;
     }

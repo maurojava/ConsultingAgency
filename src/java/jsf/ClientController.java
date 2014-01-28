@@ -31,10 +31,10 @@ private javax.faces.convert.ShortConverter myshortconverter = new ShortConverter
     private int selectedItemIndex;
 
 //added from me
-    private String clientName;
-    private short clientDepartmentNumber;
+  //  private String clientName;
+ //  private short clientDepartmentNumber;
 
-    private ClientPK createAndGetPrimaryKeyComposite() {
+   /* private ClientPK createAndGetPrimaryKeyComposite() {
         ClientPK primarykeycomposite = null;
 
         if (this.clientName != null && (!this.clientName.isEmpty()) && this.clientDepartmentNumber > 0) {
@@ -43,11 +43,11 @@ private javax.faces.convert.ShortConverter myshortconverter = new ShortConverter
         return primarykeycomposite;
 
     }
-   
+   */
 
     public ClientController() {
-this.clientName="";
-this.clientDepartmentNumber= 0;
+//this.clientName="";
+//this.clientDepartmentNumber= 0;
     }
     
 //end code added from me
@@ -101,12 +101,13 @@ this.clientDepartmentNumber= 0;
 
     public String create() {
         try {
-
+/*
         // added from me   
             ClientPK pk = createAndGetPrimaryKeyComposite();
             current.setClientPK(pk);
 
         // end code added from me
+        */
             getFacade().create(current);
             JsfUtil.addSuccessMessage(ResourceBundle.getBundle("/resources/Bundle").getString("ClientCreated"));
             return prepareCreate();
@@ -210,19 +211,23 @@ this.clientDepartmentNumber= 0;
     }
 
     public String getClientName() {
-        return clientName;
+         return this.getSelected().getClientPK().getClientName();
     }
 
     public void setClientName(String clientName) {
-        this.clientName = clientName;
+        
+     //  this.clientName = clientName;
+        getSelected().getClientPK().setClientName(clientName);
     }
 
     public short getClientDepartmentNumber() {
-        return clientDepartmentNumber;
+        return this.getSelected().getClientPK().getClientDepartmentNumber();
+             
     }
 
     public void setClientDepartmentNumber(short clientDepartmentNumber) {
-        this.clientDepartmentNumber = clientDepartmentNumber;
+       // this.clientDepartmentNumber = clientDepartmentNumber;
+        getSelected().getClientPK().setClientDepartmentNumber(clientDepartmentNumber);
     }
 
    

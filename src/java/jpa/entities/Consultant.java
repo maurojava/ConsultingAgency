@@ -38,44 +38,20 @@ import javax.persistence.TemporalType;
     @NamedQuery(name = "Consultant.findByBillableHourlyRate", query = "SELECT c FROM Consultant c WHERE c.billableHourlyRate = :billableHourlyRate"),
     @NamedQuery(name = "Consultant.findByHireDate", query = "SELECT c FROM Consultant c WHERE c.hireDate = :hireDate")})
 public class Consultant implements Serializable {
+
     private static final long serialVersionUID = 1L;
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Basic(optional = false)
-    @Column(name = "consultant_id")
     private Integer consultantId;
-    @Basic(optional = false)
-    @Column(name = "email")
+    //  @Basic(optional = false)
+    // @Column(name = "email")
     private String email;
-    @Basic(optional = false)
-    @Column(name = "password")
     private String password;
-    @Basic(optional = false)
-    @Column(name = "hourly_rate")
     private BigDecimal hourlyRate;
-    @Basic(optional = false)
-    @Column(name = "billable_hourly_rate")
     private BigDecimal billableHourlyRate;
-    @Column(name = "hire_date")
-    @Temporal(TemporalType.DATE)
     private Date hireDate;
-    @Lob
-    @Column(name = "resume")
     private String resume;
-    @JoinTable(name = "project_consultant", joinColumns = {
-        @JoinColumn(name = "consultant_id", referencedColumnName = "consultant_id")}, inverseJoinColumns = {
-        @JoinColumn(name = "client_name", referencedColumnName = "client_name"),
-        @JoinColumn(name = "client_department_number", referencedColumnName = "client_department_number"),
-        @JoinColumn(name = "project_name", referencedColumnName = "project_name")})
-    @ManyToMany
     private Collection<Project> projectCollection;
-    @JoinColumn(name = "recruiter_id", referencedColumnName = "recruiter_id")
-    @ManyToOne
     private Recruiter recruiterId;
-    @JoinColumn(name = "status_id", referencedColumnName = "status_id")
-    @ManyToOne(optional = false)
     private ConsultantStatus statusId;
-    @OneToMany(cascade = CascadeType.ALL, mappedBy = "consultantId")
     private Collection<Billable> billableCollection;
 
     public Consultant() {
@@ -93,6 +69,10 @@ public class Consultant implements Serializable {
         this.billableHourlyRate = billableHourlyRate;
     }
 
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Basic(optional = false)
+    @Column(name = "consultant_id")
     public Integer getConsultantId() {
         return consultantId;
     }
@@ -101,6 +81,8 @@ public class Consultant implements Serializable {
         this.consultantId = consultantId;
     }
 
+    @Basic(optional = false)
+    @Column(name = "email")
     public String getEmail() {
         return email;
     }
@@ -109,6 +91,8 @@ public class Consultant implements Serializable {
         this.email = email;
     }
 
+    @Basic(optional = false)
+    @Column(name = "password")
     public String getPassword() {
         return password;
     }
@@ -117,6 +101,8 @@ public class Consultant implements Serializable {
         this.password = password;
     }
 
+    @Basic(optional = false)
+    @Column(name = "hourly_rate")
     public BigDecimal getHourlyRate() {
         return hourlyRate;
     }
@@ -125,6 +111,8 @@ public class Consultant implements Serializable {
         this.hourlyRate = hourlyRate;
     }
 
+    @Basic(optional = false)
+    @Column(name = "billable_hourly_rate")
     public BigDecimal getBillableHourlyRate() {
         return billableHourlyRate;
     }
@@ -133,6 +121,8 @@ public class Consultant implements Serializable {
         this.billableHourlyRate = billableHourlyRate;
     }
 
+    @Column(name = "hire_date")
+    @Temporal(TemporalType.DATE)
     public Date getHireDate() {
         return hireDate;
     }
@@ -141,6 +131,8 @@ public class Consultant implements Serializable {
         this.hireDate = hireDate;
     }
 
+    @Lob
+    @Column(name = "resume")
     public String getResume() {
         return resume;
     }
@@ -149,6 +141,12 @@ public class Consultant implements Serializable {
         this.resume = resume;
     }
 
+    @JoinTable(name = "project_consultant", joinColumns = {
+        @JoinColumn(name = "consultant_id", referencedColumnName = "consultant_id")}, inverseJoinColumns = {
+        @JoinColumn(name = "client_name", referencedColumnName = "client_name"),
+        @JoinColumn(name = "client_department_number", referencedColumnName = "client_department_number"),
+        @JoinColumn(name = "project_name", referencedColumnName = "project_name")})
+    @ManyToMany
     public Collection<Project> getProjectCollection() {
         return projectCollection;
     }
@@ -157,6 +155,8 @@ public class Consultant implements Serializable {
         this.projectCollection = projectCollection;
     }
 
+    @JoinColumn(name = "recruiter_id", referencedColumnName = "recruiter_id")
+    @ManyToOne
     public Recruiter getRecruiterId() {
         return recruiterId;
     }
@@ -165,6 +165,8 @@ public class Consultant implements Serializable {
         this.recruiterId = recruiterId;
     }
 
+    @JoinColumn(name = "status_id", referencedColumnName = "status_id")
+    @ManyToOne(optional = false)
     public ConsultantStatus getStatusId() {
         return statusId;
     }
@@ -173,6 +175,7 @@ public class Consultant implements Serializable {
         this.statusId = statusId;
     }
 
+    @OneToMany(cascade = CascadeType.ALL, mappedBy = "consultantId")
     public Collection<Billable> getBillableCollection() {
         return billableCollection;
     }
